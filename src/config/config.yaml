@@ -1,0 +1,49 @@
+cuda:
+  cuda_alloc_conf: "expandable_segments:True"
+
+data:
+  paths:
+    root: ".data/dataset/train/VoxCeleb1/dev/vox1_dev_wav/wav"
+    test:
+      wavs: ".data/dataset/train/VoxCeleb1/test/vox1_test_wav/wav"
+      pairs: ".data/dataset/train/VoxCeleb1/test/veri_test2.txt"
+  rate: 16000
+  segment:
+    length: 2.0
+
+rawnetx:
+  embedding_dim: 256
+  sinc:
+    out_channels: 128
+    kernel_size: 251
+    in_channels: 1
+  block:
+    num_blocks: 4
+    kernel_size: 3
+    dilation: 1
+    use_se: true
+  pooling:
+    attention_dim: 128
+
+wavlm:
+  embedding_dim: 1024
+  path: "microsoft/wavlm-large"
+
+fusion:
+  embedding_dim: 256
+
+training:
+  batch_size: 4
+  epochs: 3
+  learning_rate: 1e-5
+  train_shuffle: True
+  val_shuffle: False
+
+loss:
+  amsoftmax:
+    scale: 30.0
+    margin: 0.3
+
+wavlmrawnetxsvbase:
+  path:
+    save: ".model/WavLMRawNetXSVBase.pt"

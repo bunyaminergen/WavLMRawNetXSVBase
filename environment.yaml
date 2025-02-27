@@ -1,0 +1,16 @@
+name: WavLMRawNetXSVBase
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.11
+  - numpy==1.23.5
+  - omegaconf==2.3.0
+  - pydantic==2.10.6
+  - torch==2.6.0
+  - torchaudio==2.6.0
+  - transformers==4.48.3
+  - datasets==3.3.0
+  - scikit-learn==1.6.1
